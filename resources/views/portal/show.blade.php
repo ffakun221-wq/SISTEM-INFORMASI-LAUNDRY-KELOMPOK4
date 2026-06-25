@@ -111,7 +111,7 @@
 
 @php
     $isDeliveryAvailable = now()->timezone('Asia/Jakarta')->format('H:i') < '18:00';
-    $canRequest = !in_array($order->status, ['selesai', 'dibatalkan']);
+    $canRequest = $order->status === 'siap_diambil';
 
     // Cek apakah user sudah memiliki permintaan pengantaran aktif (yang belum dibatalkan)
     $activeDelivery = \App\Models\DeliveryRequest::where('laundry_order_id', $order->id)
