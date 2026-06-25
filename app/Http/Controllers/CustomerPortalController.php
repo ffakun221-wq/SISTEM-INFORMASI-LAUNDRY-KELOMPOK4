@@ -304,11 +304,12 @@ class CustomerPortalController extends Controller
                 $request->save();
             }
 
-            // 2. KEMBALIKAN HARGA SECARA MUTLAK
+            // 2. KEMBALIKAN HARGA DAN STATUS SECARA MUTLAK
             // Alih-alih mengurangi (yang bisa error jika ditekan berkali-kali),
             // kita paksakan harganya kembali ke rumus asli: Subtotal - Diskon.
             $order->delivery_fee = 0;
             $order->total_price = ($order->subtotal ?? 0) - ($order->discount ?? 0);
+            $order->delivery_option = 'ambil_sendiri';
             $order->save();
 
             // 3. Kembalikan juga Invoice secara mutlak
