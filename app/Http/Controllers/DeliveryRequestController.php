@@ -284,7 +284,7 @@ class DeliveryRequestController extends Controller
                 ]);
         }
 
-        if ($order->delivery_option === 'diantar') {
+        if ($order->delivery_option === 'antar') {
             return redirect()
                 ->back()
                 ->with('success', 'Permintaan pengantaran untuk order ini sudah dibuat.');
@@ -351,7 +351,7 @@ class DeliveryRequestController extends Controller
             ]);
 
             $order->update([
-                'delivery_option' => 'diantar',
+                'delivery_option' => 'antar',
                 'delivery_fee' => $deliveryFee,
                 'total_price' => max(0, ($order->subtotal ?? 0) + $deliveryFee - ($order->discount ?? 0)),
             ]);

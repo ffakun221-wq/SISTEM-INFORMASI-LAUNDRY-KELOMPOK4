@@ -171,7 +171,7 @@
             </div>
 
             @if($isDeliveryAvailable)
-                <form id="delivery-form" method="POST" action="{{ route('portal.orders.request_delivery', $order->id) }}" style="display: flex; flex-direction: column; gap: 16px; margin: 0;">
+                <form id="delivery-form" method="POST" action="{{ route('portal.delivery.request', $order->id) }}" style="display: flex; flex-direction: column; gap: 16px; margin: 0;">
                     @csrf
 
                     <div style="display: flex; gap: 8px;">
