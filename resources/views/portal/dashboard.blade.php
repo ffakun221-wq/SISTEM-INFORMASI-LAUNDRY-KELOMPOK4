@@ -45,7 +45,7 @@
     </div>
 </div>
 
-<div class="portal-pickup-card">
+<div class="portal-pickup-card" style="display: flex">
     <div>
         <h3>Ajukan Jemput Cucian</h3>
         <p>Buat permintaan agar cucian Anda dijemput oleh staff laundry.</p>
