@@ -16,7 +16,7 @@ Route::get('/', function () {
     return redirect()->route('login');
 });
 
-Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+Route::get('/login', [AuthController::class, 'showLogin'])->middleware('guest')->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.process');
 
 Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
@@ -69,11 +69,14 @@ Route::middleware(['auth', 'role:pelanggan'])->group(function () {
 
     Route::get('/portal/orders/{order}', [CustomerPortalController::class, 'show'])->name('portal.orders.show');
     Route::post('/portal/pickups', [DeliveryRequestController::class, 'store'])->name('portal.pickups.store');
-    Route::post('/portal/orders/{order}/request-delivery', [CustomerPortalController::class, 'requestDelivery'])
-         ->name('portal.orders.request_delivery');
+    // Route::post('/portal/orders/{order}/request-delivery', [CustomerPortalController::class, 'requestDelivery'])
+    //      ->name('portal.orders.request_delivery');
     Route::delete('/portal/orders/{order}/cancel-delivery', [CustomerPortalController::class, 'cancelDelivery'])->name('portal.orders.cancel_delivery');
     Route::delete('/portal/pickups/{deliveryRequest}/cancel', [CustomerPortalController::class, 'cancelPickup'])->name('portal.pickups.cancel');
 
+    Route::get('/portal/orders/{order}/delivery', function () {
+        return redirect()->route('portal.active');
+    });
     Route::post('/portal/orders/{order}/delivery', [DeliveryRequestController::class, 'requestDelivery'])
-    ->name('portal.delivery.request');
+        ->name('portal.delivery.request');
 });
