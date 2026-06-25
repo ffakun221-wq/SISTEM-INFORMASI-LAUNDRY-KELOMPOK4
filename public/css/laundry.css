@@ -2717,7 +2717,7 @@ textarea.form-control {
     border-radius: 14px;
     padding: 22px 24px;
     margin-bottom: 24px;
-    display: flex;
+    /* display: flex; */
     justify-content: space-between;
     align-items: center;
     gap: 16px;
