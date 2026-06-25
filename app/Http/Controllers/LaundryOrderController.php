@@ -10,12 +10,13 @@ use App\Models\OrderStatusHistory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+
 class LaundryOrderController extends Controller
 {
     public function index(Request $request)
     {
         $search = $request->search;
-        $cleanSearch = preg_replace('/[^0-9]/', '', $search);
+        $cleanSearch = preg_replace('/[^0-9]/', '', $search ?? '');
 
         $orders = \App\Models\LaundryOrder::with(['customer.user', 'service'])
             ->when($search, function ($query) use ($search, $cleanSearch) {

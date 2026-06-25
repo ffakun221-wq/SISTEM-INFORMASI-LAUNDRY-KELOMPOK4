@@ -16,7 +16,7 @@ class TrackingController extends Controller
     public function index(Request $request)
     {
         $search = $request->search;
-        $cleanSearch = preg_replace('/[^0-9]/', '', $search);
+        $cleanSearch = preg_replace('/[^0-9]/', '', $search ?? '');
 
         $orders = \App\Models\LaundryOrder::with(['customer.user', 'service'])
             ->whereNotIn('status', ['selesai', 'dibatalkan'])
