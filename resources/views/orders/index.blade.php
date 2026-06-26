@@ -17,23 +17,13 @@
 @endif
 
 <div class="customer-toolbar" style="margin-bottom: 20px;">
-    <form method="GET" action="{{ route('orders.index') }}" class="customer-search-form">
-        <div class="customer-search-box">
-            {{-- <span class="search-icon">⌕</span> --}}
-            <input
-                type="text"
-                name="search"
-                value="{{ request('search') }}"
-                placeholder="Cari transaksi (nama, no order)..."
-            >
+    <form method="GET" action="{{ route('orders.index') }}" style="display: flex; gap: 8px;">
+        <div style="position: relative; flex: 1; max-width: 400px;">
+            <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari Nama Pelanggan atau ID Pesanan..." style="width: 100%; height: 42px; border-radius: 8px; border: 1px solid #cbd5e1; padding: 0 12px; outline: none;">
         </div>
-        <button type="submit" class="customer-search-cbtn">
-            Cari
-        </button>
+        <button type="submit" style="height: 42px; background: #0f172a; color: white; border: none; border-radius: 8px; padding: 0 20px; font-weight: 600; cursor: pointer;">Cari</button>
         @if(request('search'))
-            <a href="{{ route('orders.index') }}" class="customer-search-cbtn-reset">
-                Reset
-            </a>
+            <a href="{{ route('orders.index') }}" style="height: 42px; display: inline-flex; align-items: center; border: 1px solid #cbd5e1; border-radius: 8px; padding: 0 16px; color: #64748b; text-decoration: none; font-weight: 600; background: #f8fafc;">Reset</a>
         @endif
     </form>
 </div>
@@ -112,8 +102,6 @@
         <form method="POST" action="{{ route('orders.store') }}" class="transaction-modal-form">
             @csrf
 
-            <input type="hidden" name="order_source" value="outlet">
-            <input type="hidden" name="delivery_option" value="ambil_sendiri">
 
             <input type="hidden" name="weight" id="order_weight">
             <input type="hidden" name="quantity" id="order_quantity">

@@ -13,7 +13,7 @@
 <div class="customer-toolbar">
     <form method="GET" action="{{ route('customers.index') }}" class="customer-search-form">
         <div class="customer-search-box">
-            {{-- <span class="search-icon">⌕</span> --}}
+            <span class="search-icon">⌕</span>
             <input
                 type="text"
                 name="search"
@@ -21,14 +21,6 @@
                 placeholder="Cari pelanggan (nama, telepon, ID)..."
             >
         </div>
-        <button type="submit" class="customer-search-cbtn">
-            Cari
-        </button>
-        @if(request('search'))
-            <a href="{{ route('customers.index') }}" class="customer-search-cbtn-reset">
-                Reset
-            </a>
-        @endif
     </form>
 
     <button type="button" class="customer-add-btn" id="openCreateCustomerModal">

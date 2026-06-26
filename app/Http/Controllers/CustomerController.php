@@ -49,14 +49,14 @@ class CustomerController extends Controller
             'name'     => ['required', 'string', 'max:255'],
             'phone'    => ['required', 'string', 'max:20', 'unique:customers,phone'],
             'address'  => ['required', 'string'],
-            // Kita buat opsional agar tidak error jika tidak diisi dari modal
+
             'username' => ['nullable', 'string', 'max:255', 'unique:users,username'],
             'email'    => ['nullable', 'email', 'max:255', 'unique:users,email'],
             'password' => ['nullable', 'string', 'min:8'],
         ]);
 
         DB::transaction(function () use ($validated) {
-            // Jika username/email diisi manual, gunakan itu. Jika kosong, generate otomatis.
+
             $username = !empty($validated['username']) ? $validated['username'] : $this->generateUniqueUsername($validated['name']);
             $email = !empty($validated['email']) ? $validated['email'] : $this->generateUniqueEmail($username);
             $password = !empty($validated['password']) ? Hash::make($validated['password']) : Hash::make('pelanggan123');
@@ -73,7 +73,6 @@ class CustomerController extends Controller
                 'user_id'        => $user->id,
                 'phone'          => $validated['phone'],
                 'address'        => $validated['address'],
-                'points_balance' => 0,
             ]);
         });
 
@@ -88,7 +87,7 @@ class CustomerController extends Controller
             'name'     => 'required|string|max:255',
             'phone'    => 'required|string|max:20|unique:customers,phone,' . $customer->id,
             'address'  => 'required|string',
-            // Pastikan modal nanti mengirimkan data username & email
+
             'username' => 'required|string|max:255|unique:users,username,' . $customer->user_id,
             'email'    => 'required|email|max:255|unique:users,email,' . $customer->user_id,
             'password' => 'nullable|min:8',
@@ -101,7 +100,7 @@ class CustomerController extends Controller
         $customer->user->name = $request->name;
         $customer->user->username = $request->username;
         $customer->user->email = $request->email;
-        
+
         if ($request->filled('password')) {
             $customer->user->password = Hash::make($request->password);
         }
@@ -132,7 +131,7 @@ class CustomerController extends Controller
             ->with('success', 'Pelanggan berhasil dihapus.');
     }
 
-    // --- FUNGSI GENERATE KEMBALI --- //
+    
     private function generateUniqueEmail(string $username): string
     {
         $email = $username . '@customer.local';

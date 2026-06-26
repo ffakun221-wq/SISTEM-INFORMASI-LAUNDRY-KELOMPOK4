@@ -51,9 +51,7 @@
         <span>Periode: {{ $periodLabel }}</span>
     </div>
 
-    <button type="button" onclick="window.print()" class="report-download-btn">
-        ⭳ Unduh Laporan
-    </button>
+   
 </div>
 
 <div class="report-chart-card">

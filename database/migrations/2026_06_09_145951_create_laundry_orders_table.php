@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('laundry_orders', function (Blueprint $table) {
@@ -23,12 +20,7 @@ return new class extends Migration
             $table->integer('quantity')->nullable();
 
             $table->decimal('subtotal', 12, 2)->default(0);
-            $table->decimal('delivery_fee', 12, 2)->default(0);
-            $table->decimal('discount', 12, 2)->default(0);
             $table->decimal('total_price', 12, 2)->default(0);
-
-            $table->enum('order_source', ['outlet', 'portal'])->default('outlet');
-            $table->enum('delivery_option', ['ambil_sendiri', 'antar'])->default('ambil_sendiri');
 
             $table->enum('status', [
                 'diterima',
@@ -46,9 +38,6 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('laundry_orders');

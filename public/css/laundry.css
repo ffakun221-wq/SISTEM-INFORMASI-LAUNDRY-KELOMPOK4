@@ -495,7 +495,7 @@ textarea.form-control {
 }
 
 .btn-primary{
-    background:#0ea5e9;
+    background:#2563eb;
     color:white;
     padding:10px 16px;
     border-radius:10px;
@@ -955,8 +955,6 @@ textarea.form-control {
 
 .customer-search-form {
     margin: 0;
-    display: flex;
-    gap: 8px;
 }
 
 .customer-search-box {
@@ -990,30 +988,6 @@ textarea.form-control {
     color: #94a3b8;
 }
 
-.customer-search-cbtn {
-    height: 42px;
-    background: #0f172a;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 0 20px;
-    font-weight: 600;
-    cursor: pointer;
-}
-
-.customer-search-cbtn-reset {
-    height: 42px;
-    align-items: center;
-    display: inline-flex;
-    border: 1px solid #cbd5e1;
-    border-radius: 8px;
-    padding: 0 16px;
-    color: #64748b;
-    text-decoration: none;
-    font-weight: 600;
-    background: #f8fafc;
-}
-
 .customer-add-btn {
     height: 42px;
     background: #0ea5e9;
@@ -1027,7 +1001,6 @@ textarea.form-control {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    cursor: pointer;
 }
 
 .customer-add-btn:hover {
@@ -1131,23 +1104,6 @@ textarea.form-control {
 
     .customer-table {
         min-width: 900px;
-    }
-}
-
-@media (max-width: 1180px) {
-    .customer-toolbar {
-        align-items: stretch;
-        flex-direction: column;
-    }
-
-    .customer-search-box,
-    .customer-add-btn {
-        justify-content: center;
-        width: 100%;
-    }
-
-    .customer-search-cbtn {
-        width: 30%;
     }
 }
 
@@ -1668,21 +1624,67 @@ textarea.form-control {
 }
 
 @media print {
+    @page {
+        size: A4;
+        margin: 12mm;
+    }
+
+    html,
+    body {
+        background: #ffffff !important;
+        min-height: 0 !important;
+        height: auto !important;
+        overflow: visible !important;
+    }
+
     body * {
-        visibility: hidden;
+        visibility: hidden !important;
     }
 
-    #receiptArea,
-    #receiptArea * {
-        visibility: visible;
+    .receipt-print-area {
+        display: none !important;
     }
 
-    #receiptArea {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        border: none;
+    .receipt-print-area.print-active,
+    .receipt-print-area.print-active * {
+        visibility: visible !important;
+    }
+
+    .receipt-print-area.print-active {
+        display: block !important;
+        position: fixed !important;
+        left: 0 !important;
+        right: 0 !important;
+        top: 0 !important;
+        width: 100% !important;
+        max-width: 92mm !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+        background: #ffffff !important;
+        color: #0f172a !important;
+        page-break-after: avoid !important;
+        break-after: avoid !important;
+    }
+
+    .modal-overlay,
+    .payment-success-card {
+        position: static !important;
+        inset: auto !important;
+        width: auto !important;
+        min-height: 0 !important;
+        height: auto !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        overflow: visible !important;
+    }
+
+    .payment-modal-actions,
+    .modal-close-btn {
+        display: none !important;
     }
 }
 
@@ -1705,13 +1707,13 @@ textarea.form-control {
 }
 
 .transaction-add-btn {
-    height: 42px;
+    height: 40px;
     background: #0ea5e9;
     color: #ffffff;
     border: 0;
-    border-radius: 9px;
-    padding: 0 20px;
-    font-size: 14px;
+    border-radius: 8px;
+    padding: 0 16px;
+    font-size: 13px;
     font-weight: 700;
     cursor: pointer;
     display: inline-flex;
@@ -2169,16 +2171,7 @@ textarea.form-control {
     font-size: 14px;
 }
 
-.report-download-btn {
-    height: 44px;
-    border: 0;
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.18);
-    color: #ffffff;
-    padding: 0 18px;
-    font-weight: 700;
-    cursor: pointer;
-}
+
 
 .report-chart-card,
 .report-detail-card {
@@ -2717,7 +2710,7 @@ textarea.form-control {
     border-radius: 14px;
     padding: 22px 24px;
     margin-bottom: 24px;
-    /* display: flex; */
+    display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 16px;
@@ -2884,9 +2877,3 @@ textarea.form-control {
         width: 100%;
     }
 }
-
-/*
-emojidb:
-- new emoji: 🏠︎ 🖥️ 👥 📝 🔁 💳 📊 ⚙️ 🛍️ 📥 ⬇️ ⬆️ 📋 ⏳ 📜
-- old emoji: ⚙ ▦ 📦 ➕ ⭐ 👤 ▣ ◇ ↗
-*/

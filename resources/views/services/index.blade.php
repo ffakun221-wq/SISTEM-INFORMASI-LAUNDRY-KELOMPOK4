@@ -14,32 +14,14 @@
     <div class="alert-error" style="margin-bottom: 20px; padding: 14px; border-radius: 10px; background: #fee2e2; color: #991b1b;">{{ session('error') }}</div>
 @endif
 
-<div class="customer-toolbar">
-    <form method="GET" action="{{ route('services.index') }}" class="customer-search-form">
-        <div class="customer-search-box">
-            {{-- <span class="search-icon">⌕</span> --}}
-            <input
-                type="text"
-                name="search"
-                value="{{ request('search') }}"
-                placeholder="Cari layanan (nama layanan)..."
-            >
-        </div>
-        <button type="submit" class="customer-search-cbtn">
-            Cari
-        </button>
-        @if(request('search'))
-            <a href="{{ route('services.index') }}" class="customer-search-cbtn-reset">
-                Reset
-            </a>
-        @endif
+<div class="customer-toolbar" style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+    <form method="GET" action="{{ route('services.index') }}">
+        <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari layanan..." style="height: 40px; border-radius: 8px; border: 1px solid #cbd5e1; padding: 0 12px; outline: none;">
+        <button type="submit" style="height: 40px; background: #0f172a; color: white; border: none; border-radius: 8px; padding: 0 16px; cursor: pointer;">Cari</button>
     </form>
-
-    <button type="button" id="openCreateModalBtn" class="customer-add-btn" >
-        <span>+</span>
-        Tambah Layanan
+    <button type="button" id="openCreateModalBtn" style="background: #0ea5e9; color: white; border: none; padding: 15px 20px; border-radius: 8px; font-weight: 600; cursor: pointer;">
+        + Tambah Layanan
     </button>
-
 </div>
 
 <div class="customer-table-card" style="background: white; border-radius: 12px; padding: 20px; border: 1px solid #e2e8f0;">
@@ -68,7 +50,7 @@
                     </td>
                     <td style="padding: 12px 8px;">
                         <div style="display: flex; gap: 8px;">
-                            <button type="button" class="edit-action open-edit-modal" style="background: none; border: none; cursor: pointer; font-size: 16px;"
+                            <button type="button" class="open-edit-modal" style="background: none; border: none; cursor: pointer; font-size: 16px;"
                                 data-id="{{ $service->id }}"
                                 data-name="{{ $service->name }}"
                                 data-type="{{ $service->type }}"
@@ -91,7 +73,7 @@
     </table>
 </div>
 
-{{-- MODAL TAMBAH & EDIT (Digabung logikanya pakai JS) --}}
+{{-- MODAL TAMBAH & EDIT --}}
 <div class="modal-overlay" id="serviceModal" style="display: none; position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:999; justify-content:center; align-items:center;">
     <div class="customer-modal-card" style="background: white; width: 400px; border-radius: 12px; padding: 24px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
         <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">

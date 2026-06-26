@@ -14,19 +14,19 @@
         </div>
 
         <div class="stat-card">
-            <div class="stat-icon green">📋</div>
+            <div class="stat-icon green">▣</div>
             <h2>{{ $stats['today_transactions'] }}</h2>
             <p>Transaksi Hari Ini</p>
         </div>
 
         <div class="stat-card">
-            <div class="stat-icon orange">📦</div>
+            <div class="stat-icon orange">◇</div>
             <h2>{{ $stats['active_orders'] }}</h2>
             <p>Order Aktif</p>
         </div>
 
         <div class="stat-card">
-            <div class="stat-icon purple">📊</div>
+            <div class="stat-icon purple">↗</div>
             <h2>{{ $stats['monthly_income'] }}</h2>
             <p>Pendapatan Bulan Ini</p>
         </div>

@@ -10,13 +10,12 @@ use App\Models\OrderStatusHistory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-
 class LaundryOrderController extends Controller
 {
     public function index(Request $request)
     {
         $search = $request->search;
-        $cleanSearch = preg_replace('/[^0-9]/', '', $search ?? '');
+        $cleanSearch = preg_replace('/[^0-9]/', '', $search);
 
         $orders = \App\Models\LaundryOrder::with(['customer.user', 'service'])
             ->when($search, function ($query) use ($search, $cleanSearch) {
@@ -51,8 +50,6 @@ class LaundryOrderController extends Controller
             'service_id' => ['required', 'exists:services,id'],
             'weight' => ['nullable', 'numeric', 'min:0'],
             'quantity' => ['nullable', 'integer', 'min:1'],
-            'delivery_option' => ['required', 'in:ambil_sendiri,antar'],
-            'order_source' => ['required', 'in:outlet,portal'],
         ]);
 
         $service = Service::findOrFail($validated['service_id']);
@@ -68,11 +65,9 @@ class LaundryOrderController extends Controller
         }
 
         $subtotal = $amountBase * $service->price;
-        $deliveryFee = $validated['delivery_option'] === 'antar' ? 5000 : 0;
-        $discount = 0;
-        $total = $subtotal + $deliveryFee - $discount;
+        $total = $subtotal;
 
-        DB::transaction(function () use ($validated, $service, $subtotal, $deliveryFee, $discount, $total) {
+        DB::transaction(function () use ($validated, $service, $subtotal, $total) {
             $order = LaundryOrder::create([
                 'order_code' => 'ORD-' . now()->format('YmdHis'),
                 'customer_id' => $validated['customer_id'],
@@ -81,11 +76,7 @@ class LaundryOrderController extends Controller
                 'weight' => $validated['weight'] ?? null,
                 'quantity' => $validated['quantity'] ?? null,
                 'subtotal' => $subtotal,
-                'delivery_fee' => $deliveryFee,
-                'discount' => $discount,
                 'total_price' => $total,
-                'order_source' => $validated['order_source'],
-                'delivery_option' => $validated['delivery_option'],
                 'status' => 'diterima',
                 'payment_status' => 'belum_bayar',
             ]);
@@ -94,8 +85,6 @@ class LaundryOrderController extends Controller
                 'laundry_order_id' => $order->id,
                 'invoice_code' => 'INV-' . now()->format('YmdHis'),
                 'subtotal' => $subtotal,
-                'delivery_fee' => $deliveryFee,
-                'point_discount' => $discount,
                 'total_amount' => $total,
                 'status' => 'unpaid',
                 'issued_at' => now(),

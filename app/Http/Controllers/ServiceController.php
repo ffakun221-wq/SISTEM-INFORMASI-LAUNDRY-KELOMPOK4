@@ -66,7 +66,7 @@ class ServiceController extends Controller
             $service->delete();
             return back()->with('success', 'Layanan berhasil dihapus secara permanen.');
         } catch (\Illuminate\Database\QueryException $e) {
-            // Error handling jika layanan tidak bisa dihapus karena sedang dipakai di tabel pesanan
+            
             return back()->with('error', 'Layanan ini tidak bisa dihapus karena sudah ada riwayat transaksi yang menggunakannya. Solusi: Cukup matikan status aktifnya (Nonaktifkan) melalui tombol Edit.');
         }
     }

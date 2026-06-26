@@ -8,19 +8,24 @@ use App\Http\Controllers\LaundryOrderController;
 use App\Http\Controllers\TrackingController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ReportController;
-use App\Http\Controllers\DeliveryRequestController;
-use App\Http\Controllers\CustomerPortalController;
-use App\Http\Controllers\SettingController;
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\PublicStatusController;
 
 Route::get('/', function () {
     return redirect()->route('login');
 });
 
-Route::get('/login', [AuthController::class, 'showLogin'])->middleware('guest')->name('login');
+// Halaman publik untuk pelanggan mengecek status cucian tanpa login.
+Route::get('/cek-status', [PublicStatusController::class, 'index'])->name('status.check');
+Route::post('/cek-status', [PublicStatusController::class, 'search'])->name('status.search');
+
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.process');
 
-Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
-Route::post('/register', [AuthController::class, 'register'])->name('register.process');
+// Register pelanggan dan portal pelanggan dinonaktifkan agar sistem lebih sederhana untuk presentasi.
+Route::get('/register', function () {
+    return redirect()->route('login');
+})->name('register');
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
@@ -35,48 +40,12 @@ Route::middleware(['auth', 'role:admin,kasir'])->group(function () {
     Route::get('/tracking', [TrackingController::class, 'index'])->name('tracking.index');
     Route::patch('/tracking/{order}', [TrackingController::class, 'updateStatus'])->name('tracking.update');
 
-
     Route::get('/payments', [PaymentController::class, 'index'])->name('payments.index');
     Route::post('/payments/{invoice}/process', [PaymentController::class, 'process'])->name('payments.process');
 
-    Route::get('/delivery-requests', [DeliveryRequestController::class, 'index'])->name('delivery.index');
-    Route::patch('/delivery-requests/{deliveryRequest}', [DeliveryRequestController::class, 'updateStatus'])->name('delivery.update');
-
-    Route::post('/delivery-requests/{deliveryRequest}/confirm', [DeliveryRequestController::class, 'confirm'])
-    ->name('delivery.confirm');
-
-    Route::resource('services', App\Http\Controllers\ServiceController::class)->except(['create', 'show', 'edit']);
+    Route::resource('services', ServiceController::class)->except(['create', 'show', 'edit']);
 });
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/reports', [ReportController::class, 'index'])->name('reports.index');
-
-    Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
-    Route::put('/settings', [SettingController::class, 'update'])->name('settings.update');
-});
-
-
-Route::middleware(['auth', 'role:pelanggan'])->group(function () {
-    Route::get('/portal', [CustomerPortalController::class, 'index'])->name('portal.dashboard');
-    Route::get('/portal/active', [CustomerPortalController::class, 'active'])->name('portal.active');
-    Route::get('/portal/history', [CustomerPortalController::class, 'history'])->name('portal.history');
-    Route::get('/portal/points', [CustomerPortalController::class, 'points'])->name('portal.points');
-    Route::get('/portal/account', [CustomerPortalController::class, 'account'])->name('portal.account');
-    Route::post('/portal/account/update', [CustomerPortalController::class, 'updateAccount'])->name('portal.account.update');
-
-    // Route Halaman Buat Pesanan Baru
-    Route::get('/portal/pickups/create', [CustomerPortalController::class, 'createPickup'])->name('portal.pickups.create');
-
-    Route::get('/portal/orders/{order}', [CustomerPortalController::class, 'show'])->name('portal.orders.show');
-    Route::post('/portal/pickups', [DeliveryRequestController::class, 'store'])->name('portal.pickups.store');
-    // Route::post('/portal/orders/{order}/request-delivery', [CustomerPortalController::class, 'requestDelivery'])
-    //      ->name('portal.orders.request_delivery');
-    Route::delete('/portal/orders/{order}/cancel-delivery', [CustomerPortalController::class, 'cancelDelivery'])->name('portal.orders.cancel_delivery');
-    Route::delete('/portal/pickups/{deliveryRequest}/cancel', [CustomerPortalController::class, 'cancelPickup'])->name('portal.pickups.cancel');
-
-    Route::get('/portal/orders/{order}/delivery', function () {
-        return redirect()->route('portal.active');
-    });
-    Route::post('/portal/orders/{order}/delivery', [DeliveryRequestController::class, 'requestDelivery'])
-        ->name('portal.delivery.request');
 });

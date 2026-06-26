@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('invoices', function (Blueprint $table) {
@@ -17,8 +14,6 @@ return new class extends Migration
 
             $table->string('invoice_code')->unique();
             $table->decimal('subtotal', 12, 2)->default(0);
-            $table->decimal('delivery_fee', 12, 2)->default(0);
-            $table->decimal('point_discount', 12, 2)->default(0);
             $table->decimal('total_amount', 12, 2)->default(0);
 
             $table->enum('status', ['unpaid', 'paid', 'cancelled'])->default('unpaid');
@@ -28,9 +23,6 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('invoices');

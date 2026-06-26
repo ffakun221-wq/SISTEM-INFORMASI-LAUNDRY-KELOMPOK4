@@ -10,8 +10,6 @@ class Invoice extends Model
         'laundry_order_id',
         'invoice_code',
         'subtotal',
-        'delivery_fee',
-        'point_discount',
         'total_amount',
         'status',
         'issued_at',

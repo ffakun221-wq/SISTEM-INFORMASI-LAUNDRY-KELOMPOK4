@@ -16,49 +16,33 @@
 
             <nav class="sidebar-menu">
                 <a href="{{ route('dashboard') }}" class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">
-                    <span class="menu-icon">🖥️</span>
+                    <span class="menu-icon">▦</span>
                     Dashboard
                 </a>
 
                 <a href="{{ route('customers.index') }}" class="{{ request()->routeIs('customers.*') ? 'active' : '' }}">
-                    <span class="menu-icon">👥</span>
                     Manajemen Pelanggan
                 </a>
 
                 <a href="{{ route('services.index') }}" class="{{ request()->routeIs('services.*') ? 'active' : '' }}">
-                    <span class="menu-icon">📝</span>
                     Manajemen Layanan
                 </a>
 
                 <a href="{{ route('orders.index') }}" class="{{ request()->routeIs('orders.*') ? 'active' : '' }}">
-                    <span class="menu-icon">📋</span>
                     Manajemen Transaksi
                 </a>
 
                 <a href="{{ route('tracking.index') }}" class="{{ request()->routeIs('tracking.*') ? 'active' : '' }}">
-                    <span class="menu-icon">⏳</span>
                     Order Tracking
                 </a>
 
-                <a href="{{ route('delivery.index') }}" class="{{ request()->routeIs('delivery.*') ? 'active' : '' }}">
-                    <span class="menu-icon">🚚</span>
-                    Pesanan Jemput & Antar
-                </a>
-
                 <a href="{{ route('payments.index') }}" class="{{ request()->routeIs('payments.*') ? 'active' : '' }}">
-                    <span class="menu-icon">💳</span>
                     Pembayaran
                 </a>
 
                 @if(auth()->user()->role === 'admin')
                     <a href="{{ route('reports.index') }}" class="{{ request()->routeIs('reports.*') ? 'active' : '' }}">
-                        <span class="menu-icon">📊</span>
                         Laporan Keuangan
-                    </a>
-
-                    <a href="{{ route('settings.index') }}" class="{{ request()->routeIs('settings.*') ? 'active' : '' }}">
-                        <span class="menu-icon">⚙️</span>
-                        Konfigurasi
                     </a>
                 @endif
             </nav>

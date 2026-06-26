@@ -14,11 +14,7 @@ class LaundryOrder extends Model
         'weight',
         'quantity',
         'subtotal',
-        'delivery_fee',
-        'discount',
         'total_price',
-        'order_source',
-        'delivery_option',
         'status',
         'payment_status',
     ];
@@ -46,10 +42,5 @@ class LaundryOrder extends Model
     public function statusHistories()
     {
         return $this->hasMany(OrderStatusHistory::class);
-    }
-
-    public function payment()
-    {
-        return $this->hasOne(Payment::class);
     }
 }

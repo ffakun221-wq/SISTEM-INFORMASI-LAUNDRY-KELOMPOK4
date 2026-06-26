@@ -57,21 +57,16 @@
             </div>
         </div>
 
+
         <div class="form-row">
             <div class="form-group">
                 <label>Sumber Order</label>
-                <select name="order_source" class="form-control">
-                    <option value="outlet">Outlet</option>
-                    <option value="portal">Portal</option>
-                </select>
+                <input type="text" class="form-control" value="Outlet" disabled>
             </div>
 
             <div class="form-group">
                 <label>Opsi Pengambilan</label>
-                <select name="delivery_option" id="delivery_option" class="form-control">
-                    <option value="ambil_sendiri">Ambil Sendiri</option>
-                    <option value="antar">Antar</option>
-                </select>
+                <input type="text" class="form-control" value="Ambil Sendiri" disabled>
             </div>
         </div>
 
@@ -91,7 +86,6 @@
     const serviceSelect = document.getElementById('service_id');
     const weightInput = document.getElementById('weight');
     const quantityInput = document.getElementById('quantity');
-    const deliverySelect = document.getElementById('delivery_option');
     const totalPreview = document.getElementById('totalPreview');
 
     function rupiah(number) {
@@ -109,10 +103,8 @@
 
         const weight = Number(weightInput.value || 0);
         const quantity = Number(quantityInput.value || 0);
-        const deliveryFee = deliverySelect.value === 'antar' ? 5000 : 0;
-
         const base = type === 'kiloan' ? weight : quantity;
-        const total = (base * price) + deliveryFee;
+        const total = base * price;
 
         totalPreview.innerText = rupiah(total);
     }
@@ -120,6 +112,5 @@
     serviceSelect.addEventListener('change', calculateTotal);
     weightInput.addEventListener('input', calculateTotal);
     quantityInput.addEventListener('input', calculateTotal);
-    deliverySelect.addEventListener('change', calculateTotal);
 </script>
 @endsection
