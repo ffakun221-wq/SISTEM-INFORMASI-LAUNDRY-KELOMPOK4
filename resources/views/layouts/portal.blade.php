@@ -40,7 +40,7 @@
                     Manajemen Akun
                 </a>
                 <a href="{{ route('portal.faq') }}" class="{{ request()->routeIs('portal.faq') ? 'active' : '' }}">
-                    <span class="menu-icon">?</span>
+                    <span class="menu-icon">❓</span>
                     FAQ
                 </a>
             </nav>

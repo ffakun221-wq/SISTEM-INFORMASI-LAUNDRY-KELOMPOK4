@@ -7,7 +7,7 @@
 </section>
 
 <div class="faq-card">
-    <form method="POST">
+    <form>
         <div class="faq-list">
             <div class="faq-item">
                 <div>
@@ -17,19 +17,19 @@
             </div>
             <div class="faq-item">
                 <div>
-                    <label>Cara cek status cucian?</label>
+                    <label>Bagaimana cara cek Status Cucian?</label>
                     <p>Buka halaman Pesanan Aktif, di halaman tersebut bisa terlihat status cucian dan bayar</p>
                 </div>
             </div>
             <div class="faq-item">
                 <div>
-                    <label>Cara request jemput?</label>
+                    <label>Bagaimana cara Request Jemput?</label>
                     <p>Buka halaman Buat Pesanan, isi form pada halaman tersebut, setelah submit Kasir akan mengkonfirmasi request jemputan</p>
                 </div>
             </div>
             <div class="faq-item">
                 <div>
-                    <label>Cara request antar?</label>
+                    <label>Bagaimana cara Request Antar?</label>
                     <p>Buka halaman Pesanan Aktif, buka detail order yang ingin di antar, jika order memenuhi untuk request antar, akan ada form yang bisa diisi, setelah submit kasir akan mengkonfirmasi request antar</p>
                 </div>
             </div>

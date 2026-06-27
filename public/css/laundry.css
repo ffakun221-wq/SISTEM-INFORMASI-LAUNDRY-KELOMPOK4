@@ -2926,7 +2926,7 @@ textarea.form-control {
 
 .faq-item label {
     display: block;
-    font-size: 15px;
+    font-size: 17px;
     font-weight: 800;
     color: #0f172a;
     margin-bottom: 6px;
@@ -2934,9 +2934,9 @@ textarea.form-control {
 
 .faq-item p {
     margin: 0;
-    color: #64748b;
-    font-size: 13px;
-    max-width: 560px;
+    color: #526073;
+    font-size: 15px;
+    max-width: 760px;
 }
 
 @media (max-width: 760px) {
@@ -2948,6 +2948,6 @@ textarea.form-control {
 
 /*
 emojidb:
-- new emoji: 🏠︎ 🖥️ 👥 📝 🔁 💳 📊 ⚙️ 🛍️ 📥 ⬇️ ⬆️ 📋 ⏳ 📜
+- new emoji: 🏠︎ 🖥️ 👥 📝 🔁 💳 📊 ⚙️ 🛍️ 📥 ⬇️ ⬆️ 📋 ⏳ 📜 ❓
 - old emoji: ⚙ ▦ 📦 ➕ ⭐ 👤 ▣ ◇ ↗
 */
