@@ -39,6 +39,10 @@
                     <span class="menu-icon">👤</span>
                     Manajemen Akun
                 </a>
+                <a href="{{ route('portal.faq') }}" class="{{ request()->routeIs('portal.faq') ? 'active' : '' }}">
+                    <span class="menu-icon">?</span>
+                    FAQ
+                </a>
             </nav>
 
             <form method="POST" action="{{ route('logout') }}" class="logout-area">

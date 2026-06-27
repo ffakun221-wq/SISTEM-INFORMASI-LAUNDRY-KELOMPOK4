@@ -63,6 +63,7 @@ Route::middleware(['auth', 'role:pelanggan'])->group(function () {
     Route::get('/portal/points', [CustomerPortalController::class, 'points'])->name('portal.points');
     Route::get('/portal/account', [CustomerPortalController::class, 'account'])->name('portal.account');
     Route::post('/portal/account/update', [CustomerPortalController::class, 'updateAccount'])->name('portal.account.update');
+    Route::view('/portal/faq', 'portal.faq')->name('portal.faq');
 
     // Route Halaman Buat Pesanan Baru
     Route::get('/portal/pickups/create', [CustomerPortalController::class, 'createPickup'])->name('portal.pickups.create');
