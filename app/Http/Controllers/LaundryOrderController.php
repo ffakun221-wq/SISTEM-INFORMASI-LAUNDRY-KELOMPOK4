@@ -67,8 +67,9 @@ class LaundryOrderController extends Controller
                 ->withInput();
         }
 
+        $fee = Setting::getNumber('delivery_fee_per_km', 2000);
         $subtotal = $amountBase * $service->price;
-        $deliveryFee = $validated['delivery_option'] === 'antar' ? 5000 : 0;
+        $deliveryFee = $validated['delivery_option'] === 'antar' ? $fee : 0;
         $discount = 0;
         $total = $subtotal + $deliveryFee - $discount;
 
