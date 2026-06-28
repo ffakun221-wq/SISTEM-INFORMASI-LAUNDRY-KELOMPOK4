@@ -337,7 +337,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let currentBaseTotal = 0;
     let currentAvailablePoints = 0;
-    const pointValue = 100;
+    const pointValue = {{ $point }};
 
     function rupiah(number) {
         return new Intl.NumberFormat('id-ID', {

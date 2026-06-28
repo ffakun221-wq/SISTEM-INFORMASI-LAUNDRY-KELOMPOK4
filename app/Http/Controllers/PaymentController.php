@@ -48,7 +48,9 @@ class PaymentController extends Controller
                 ->find($request->paid);
         }
 
-        return view('payments.index', compact('invoices', 'search', 'paidInvoice'));
+        $point = Setting::getNumber('point_value_rupiah', 100);
+
+        return view('payments.index', compact('invoices', 'search', 'paidInvoice', 'point'));
     }
 
     public function process(Request $request, Invoice $invoice)
