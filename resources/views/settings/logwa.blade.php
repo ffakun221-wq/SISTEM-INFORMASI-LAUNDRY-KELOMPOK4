@@ -23,7 +23,7 @@
                 type="text"
                 name="search"
                 value="{{ request('search') }}"
-                placeholder="Cari transaksi (nama, no order)..."
+                placeholder="Cari notifikasi (nama pelanggan, no order)..."
             >
         </div>
         <button type="submit" class="customer-search-cbtn">
@@ -41,7 +41,7 @@
     <table class="transaction-table">
         <thead>
             <tr>
-                <th>ID. Order</th>
+                <th>No. Order</th>
                 <th>Pelanggan</th>
                 <th>Channel</th>
                 <th>No. Penerima</th>
@@ -61,12 +61,12 @@
                     <td>{{ $log->recipient }}</td>
                     <td><strong>{{ $log->status}}</strong></td>
                     <td>{{ $log->error_message }}</td>
-                    <td>{{ $log->created_at }}</td>
+                    <td>{{ $log->created_at->format('d M Y H:i') }}</td>
                     <td>
                         <button
                             type="button"
                             class="edit-action open-msg-modal"
-                            title="Edit"
+                            title="Lihat Pesan"
                             data-message="{{ $log->message }}"
                         >👁</button>
                     </td>
@@ -87,13 +87,13 @@
 </div>
 
 {{-- MODAL OVERLAY MESSAGE --}}
-<div class="modal-overlay" id="logmsgmodal">
-    <div class="customer-modal-card" style="max-height: 90vh; overflow-y: auto;">
-        <div class="customer-modal-header">
-            <h3>Message</h3>
-            <button type="button" class="modal-close-btn" data-close-modal>&times;</button>
+<div class="logwa-modal-overlay" id="logmsgmodal">
+    <div class="logwa-modal-card" style="max-height: 90vh; overflow-y: auto;">
+        <div class="logwa-modal-header">
+            <h3>Pesan Notifikasi</h3>
+            <button type="button" class="logwa-modal-close-btn" data-close-modal>&times;</button>
         </div>
-        <div class="modal-form-group">
+        <div class="logwa-modal-form-group">
             <textarea name="msg" id="msgarea" readonly></textarea>
         </div>
     </div>
