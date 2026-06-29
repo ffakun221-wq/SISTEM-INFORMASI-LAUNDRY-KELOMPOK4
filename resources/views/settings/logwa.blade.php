@@ -82,6 +82,10 @@
     </table>
 </div>
 
+<div class="pagination-container" style="margin-top: 15px;">
+    {{ $logs->links() }}
+</div>
+
 {{-- MODAL OVERLAY MESSAGE --}}
 <div class="modal-overlay" id="logmsgmodal">
     <div class="customer-modal-card" style="max-height: 90vh; overflow-y: auto;">
