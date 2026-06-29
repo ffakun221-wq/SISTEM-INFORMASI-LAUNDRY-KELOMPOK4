@@ -37,8 +37,8 @@
     </form>
 </div>
 
-<div class="transaction-table-card">
-    <table class="transaction-table">
+<div class="logwa-table-card">
+    <table class="logwa-table">
         <thead>
             <tr>
                 <th>No. Order</th>
@@ -77,10 +77,10 @@
                     <td><span class="logwa-status {{ $statusClass }}">{{ $statusLabel }}</span></td>
                     <td>{{ $log->error_message }}</td>
                     <td>{{ $log->created_at->format('d M Y H:i') }}</td>
-                    <td>
+                    <td class="logwa-msgview-td">
                         <button
                             type="button"
-                            class="edit-action open-msg-modal"
+                            class="logwa-msgview open-msg-modal"
                             title="Lihat Pesan"
                             data-message="{{ $log->message }}"
                         >👁</button>

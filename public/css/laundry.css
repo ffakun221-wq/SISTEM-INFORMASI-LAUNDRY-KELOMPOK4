@@ -1898,6 +1898,12 @@ textarea.form-control {
     margin-top: 2px;
 }
 
+@media (max-width: 1400px) {
+    .transaction-table-card {
+        overflow-x: auto;
+    }
+}
+
 @media (max-width: 760px) {
     .transaction-table-card {
         overflow-x: auto;
@@ -2959,6 +2965,46 @@ textarea.form-control {
     margin-bottom: 24px;
 }
 
+.logwa-table-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.logwa-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.logwa-table th {
+    background: #f8fafc;
+    color: #64748b;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 800;
+    text-align: left;
+    padding: 15px 18px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.logwa-table td {
+    padding: 15px 18px;
+    border-bottom: 1px solid #e2e8f0;
+    color: #0f172a;
+    font-size: 13px;
+    vertical-align: middle;
+}
+
+.logwa-table tr:last-child td {
+    border-bottom: 0;
+}
+
+.logwa-table td:first-child {
+    font-weight: 800;
+}
+
 .logwa-status {
     display: inline-flex;
     align-items: center;
@@ -2983,6 +3029,22 @@ textarea.form-control {
 .logwa-failed {
     background: #fee2e2;
     color: #b91c1c;
+}
+
+.logwa-msgview-td {
+    text-align: center;
+    align-items: center;
+}
+
+.logwa-msgview {
+    border: 0;
+    background: transparent;
+    color: #0ea5e9;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    text-decoration: none;
 }
 
 .logwa-modal-overlay {
@@ -3055,6 +3117,16 @@ textarea.form-control {
 .logwa-modal-form-group textarea:focus {
     border-color: #0ea5e9;
     box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.12);
+}
+
+@media (max-width: 1400px) {
+    .logwa-table-card {
+        overflow-x: auto;
+    }
+
+    .logwa-table {
+        min-width: 900px;
+    }
 }
 
 /* =========================
