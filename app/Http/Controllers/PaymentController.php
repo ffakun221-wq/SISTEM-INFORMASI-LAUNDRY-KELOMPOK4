@@ -103,6 +103,8 @@ class PaymentController extends Controller
             ]);
 
             $order->update([
+                'discount' => $pointDiscount,
+                'total_price' => $finalTotal,
                 'payment_status' => 'dibayar',
             ]);
 
