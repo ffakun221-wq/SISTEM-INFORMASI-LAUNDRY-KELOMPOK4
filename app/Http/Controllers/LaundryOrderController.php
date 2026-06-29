@@ -7,6 +7,7 @@ use App\Models\Service;
 use App\Models\LaundryOrder;
 use App\Models\Invoice;
 use App\Models\OrderStatusHistory;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
