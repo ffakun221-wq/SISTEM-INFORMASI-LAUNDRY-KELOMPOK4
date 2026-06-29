@@ -14,22 +14,22 @@ class LogwaController extends Controller
         $search = $request->search;
         $cleanSearch = preg_replace('/[^0-9]/', '', $search ?? '');
 
-        $orders = \App\Models\NotificationLog::with(['customer.user'])
+        $logs = NotificationLog::with(['customer.user'])
             ->when($search, function ($query) use ($search, $cleanSearch) {
                 $query->where(function ($q) use ($search, $cleanSearch) {
                     $q->whereHas('customer.user', function ($u) use ($search) {
                         $u->where('name', 'like', "%{$search}%");
                     });
+
                     if ($cleanSearch !== '') {
-                        $q->orWhere('id', (int) $cleanSearch);
+                        $q->orWhere('laundry_order_id', (int) $cleanSearch);
                     }
                 });
             })
             ->latest()
-            ->paginate(10)->appends(request()->query());
+            ->paginate(10)
+            ->appends(request()->query());
 
-        $logs = NotificationLog::all();
-
-        return view('settings.logwa', compact('logs', 'orders'));
+        return view('settings.logwa', compact('logs'));
     }
 }
