@@ -2950,6 +2950,41 @@ textarea.form-control {
 }
 
 /* LOG WA / LOGWA */
+.logwa-page-header h1 {
+    font-size: 34px;
+    margin-bottom: 8px;
+}
+
+.logwa-page-header p {
+    margin-bottom: 24px;
+}
+
+.logwa-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.logwa-pending {
+    background: #dbeafe;
+    color: #2563eb;
+}
+
+.logwa-sent {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.logwa-failed {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
 .logwa-modal-overlay {
     position: fixed;
     inset: 0;

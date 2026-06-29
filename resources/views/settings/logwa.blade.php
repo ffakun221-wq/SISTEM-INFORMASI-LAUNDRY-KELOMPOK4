@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<section class="page-header transaction-page-header">
+<section class="page-header logwa-page-header">
     <h1>Log Notifikasi WhatsApp</h1>
     <p>Pantau notifikasi WhatsApp yang terkirim saat order siap diambil</p>
 </section>
@@ -54,12 +54,27 @@
 
         <tbody>
             @forelse($logs as $log)
+                @php
+                    $statusLabel = match($log->status) {
+                        'pending' => 'Pending',
+                        'sent' => 'Berhasil',
+                        'failed' => 'Gagal',
+                        default => $log->status,
+                    };
+
+                    $statusClass = match($log->status) {
+                        'pending' => 'logwa-pending',
+                        'sent' => 'logwa-sent',
+                        'failed' => 'logwa-failed',
+                        default => 'pending',
+                    };
+                @endphp
                 <tr>
                     <td><strong>ORD-{{ str_pad($log->laundry_order_id, 3, '0', STR_PAD_LEFT) }}</strong></td>
                     <td>{{ $log->customer->user->name ?? '-' }}</td>
                     <td>{{ $log->channel ?? '-' }}</td>
-                    <td>{{ $log->recipient }}</td>
-                    <td><strong>{{ $log->status}}</strong></td>
+                    <td><strong>{{ $log->recipient }}</strong></td>
+                    <td><span class="logwa-status {{ $statusClass }}">{{ $statusLabel }}</span></td>
                     <td>{{ $log->error_message }}</td>
                     <td>{{ $log->created_at->format('d M Y H:i') }}</td>
                     <td>
