@@ -51,4 +51,15 @@
         </div>
     </form>
 </div>
+
+<div class="settingwa-card">
+    <div>
+        <h3>Log Notifikasi WhatsApp</h3>
+        <p>Cek notifikasi WhatsApp yang terkirim saat order siap diambil</p>
+    </div>
+
+    <a href="{{ route('settings.index') }}" class="settingwa-btn">
+        Buka Halaman
+    </a>
+</div>
 @endsection
