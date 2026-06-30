@@ -37,6 +37,7 @@
     </form>
 </div>
 
+<div class="tab-content" style="display: block;">
 <div class="logwa-table-card">
     <table class="logwa-table">
         <thead>
@@ -96,9 +97,9 @@
         </tbody>
     </table>
 </div>
-
-<div class="pagination-container" style="margin-top: 15px;">
-    {{ $logs->links() }}
+<div style="margin-top: 16px;">
+    {{ $logs->links('pagination::bootstrap-4') }}
+</div>
 </div>
 
 {{-- MODAL OVERLAY MESSAGE --}}

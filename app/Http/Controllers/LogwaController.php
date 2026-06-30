@@ -27,7 +27,7 @@ class LogwaController extends Controller
                 });
             })
             ->latest()
-            ->paginate(10)
+            ->paginate(10, ['*'], 'logwa_page')
             ->appends(request()->query());
 
         return view('settings.logwa', compact('logs'));
