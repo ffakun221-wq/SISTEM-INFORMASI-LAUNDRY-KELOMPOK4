@@ -37,69 +37,70 @@
     </form>
 </div>
 
-<div class="tab-content" style="display: block;">
-<div class="logwa-table-card">
-    <table class="logwa-table">
-        <thead>
-            <tr>
-                <th>No. Order</th>
-                <th>Pelanggan</th>
-                <th>Channel</th>
-                <th>No. Penerima</th>
-                <th>Status</th>
-                <th>Alasan Error</th>
-                <th>Dibuat Pada</th>
-                <th>Pesan</th>
-            </tr>
-        </thead>
-
-        <tbody>
-            @forelse($logs as $log)
-                @php
-                    $statusLabel = match($log->status) {
-                        'pending' => 'Pending',
-                        'sent' => 'Berhasil',
-                        'failed' => 'Gagal',
-                        default => $log->status,
-                    };
-
-                    $statusClass = match($log->status) {
-                        'pending' => 'logwa-pending',
-                        'sent' => 'logwa-sent',
-                        'failed' => 'logwa-failed',
-                        default => 'pending',
-                    };
-                @endphp
+<div style="display: block;">
+    <div class="logwa-table-card">
+        <table class="logwa-table">
+            <thead>
                 <tr>
-                    <td><strong>ORD-{{ str_pad($log->laundry_order_id, 3, '0', STR_PAD_LEFT) }}</strong></td>
-                    <td>{{ $log->customer->user->name ?? '-' }}</td>
-                    <td>{{ $log->channel ?? '-' }}</td>
-                    <td><strong>{{ $log->recipient }}</strong></td>
-                    <td><span class="logwa-status {{ $statusClass }}">{{ $statusLabel }}</span></td>
-                    <td>{{ $log->error_message }}</td>
-                    <td>{{ $log->created_at->format('d M Y H:i') }}</td>
-                    <td class="logwa-msgview-td">
-                        <button
-                            type="button"
-                            class="logwa-msgview open-msg-modal"
-                            title="Lihat Pesan"
-                            data-message="{{ $log->message }}"
-                        >👁</button>
-                    </td>
+                    <th>No. Order</th>
+                    <th>Pelanggan</th>
+                    <th>Channel</th>
+                    <th>No. Penerima</th>
+                    <th>Status</th>
+                    <th>Alasan Error</th>
+                    <th>Dibuat Pada</th>
+                    <th>Pesan</th>
                 </tr>
-            @empty
-                <tr>
-                    <td colspan="8" class="empty-row">
-                        Belum ada transaksi.
-                    </td>
-                </tr>
-            @endforelse
-        </tbody>
-    </table>
-</div>
-<div style="margin-top: 16px;">
-    {{ $logs->links('pagination::bootstrap-4') }}
-</div>
+            </thead>
+
+            <tbody>
+                @forelse($logs as $log)
+                    @php
+                        $statusLabel = match($log->status) {
+                            'pending' => 'Pending',
+                            'sent' => 'Berhasil',
+                            'failed' => 'Gagal',
+                            default => $log->status,
+                        };
+
+                        $statusClass = match($log->status) {
+                            'pending' => 'logwa-pending',
+                            'sent' => 'logwa-sent',
+                            'failed' => 'logwa-failed',
+                            default => 'pending',
+                        };
+                    @endphp
+                    <tr>
+                        <td><strong>ORD-{{ str_pad($log->laundry_order_id, 3, '0', STR_PAD_LEFT) }}</strong></td>
+                        <td>{{ $log->customer->user->name ?? '-' }}</td>
+                        <td>{{ $log->channel ?? '-' }}</td>
+                        <td><strong>{{ $log->recipient }}</strong></td>
+                        <td><span class="logwa-status {{ $statusClass }}">{{ $statusLabel }}</span></td>
+                        <td>{{ $log->error_message }}</td>
+                        <td>{{ $log->created_at->format('d M Y H:i') }}</td>
+                        <td class="logwa-msgview-td">
+                            <button
+                                type="button"
+                                class="logwa-msgview open-msg-modal"
+                                title="Lihat Pesan"
+                                data-message="{{ $log->message }}"
+                            >👁</button>
+                        </td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="8" class="empty-row">
+                            Belum ada transaksi.
+                        </td>
+                    </tr>
+                @endforelse
+            </tbody>
+        </table>
+    </div>
+
+    <div style="margin-top: 16px;">
+        {{ $logs->links('pagination::bootstrap-4') }}
+    </div>
 </div>
 
 {{-- MODAL OVERLAY MESSAGE --}}
@@ -156,4 +157,53 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 </script>
+<style>
+    .pagination {
+        display: flex;
+        padding-left: 0;
+        list-style: none;
+        gap: 6px;
+        justify-content: flex-end; /* Posisi di kanan */
+        margin-top: 10px;
+        margin-bottom: 0;
+    }
+
+    .page-item .page-link {
+        position: relative;
+        display: block;
+        padding: 8px 14px;
+        color: #64748b;
+        background-color: #ffffff;
+        border: 1px solid #cbd5e1;
+        border-radius: 8px; /* Membuat sudut membulat */
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 600;
+        transition: all 0.2s ease-in-out;
+    }
+
+    /* Warna tombol saat kursor diarahkan (hover) */
+    .page-item:not(.active):not(.disabled) .page-link:hover {
+        background-color: #f8fafc;
+        color: #0ea5e9;
+        border-color: #bae6fd;
+    }
+
+    /* Warna tombol untuk halaman yang sedang aktif */
+    .page-item.active .page-link {
+        z-index: 3;
+        color: #ffffff;
+        background-color: #0ea5e9;
+        border-color: #0ea5e9;
+        box-shadow: 0 2px 4px rgba(14, 165, 233, 0.2);
+    }
+
+    /* Tampilan tombol yang tidak bisa diklik (misal tombol '<' di halaman pertama) */
+    .page-item.disabled .page-link {
+        color: #94a3b8;
+        pointer-events: none;
+        background-color: #f1f5f9;
+        border-color: #e2e8f0;
+    }
+</style>
 @endsection
