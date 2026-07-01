@@ -54,7 +54,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
     Route::put('/settings', [SettingController::class, 'update'])->name('settings.update');
-    Route::get('/logwa', [LogwaController::class, 'index'])->name('logwa.index');
+    Route::get('/logwa', [LogwaController::class, 'index'])->name('settings.logwa');
 });
 
 

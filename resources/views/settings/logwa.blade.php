@@ -17,7 +17,7 @@
 @endif
 
 <div class="customer-toolbar" style="margin-bottom: 20px;">
-    <form method="GET" action="{{ route('logwa.index') }}" class="customer-search-form">
+    <form method="GET" action="{{ route('settings.logwa') }}" class="customer-search-form">
         <div class="customer-search-box">
             <input
                 type="text"
@@ -30,7 +30,7 @@
             Cari
         </button>
         @if(request('search'))
-            <a href="{{ route('logwa.index') }}" class="customer-search-cbtn-reset">
+            <a href="{{ route('settings.logwa') }}" class="customer-search-cbtn-reset">
                 Reset
             </a>
         @endif

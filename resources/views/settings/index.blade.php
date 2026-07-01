@@ -58,7 +58,7 @@
         <p>Cek notifikasi WhatsApp yang terkirim saat order siap diambil</p>
     </div>
 
-    <a href="{{ route('logwa.index') }}" class="settingwa-btn">
+    <a href="{{ route('settings.logwa') }}" class="settingwa-btn">
         Buka Halaman
     </a>
 </div>
