@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
-class LogwaController extends Controller
+class NotificationLogController extends Controller
 {
     public function index(Request $request)
     {
@@ -30,6 +30,6 @@ class LogwaController extends Controller
             ->paginate(10, ['*'], 'logwa_page')
             ->appends(request()->query());
 
-        return view('settings.logwa', compact('logs'));
+        return view('settings.notiflog', compact('logs'));
     }
 }

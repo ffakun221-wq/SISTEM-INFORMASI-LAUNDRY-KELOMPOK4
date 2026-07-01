@@ -11,7 +11,7 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\DeliveryRequestController;
 use App\Http\Controllers\CustomerPortalController;
 use App\Http\Controllers\SettingController;
-use App\Http\Controllers\LogwaController;
+use App\Http\Controllers\NotificationLogController;
 
 Route::get('/', function () {
     return redirect()->route('login');
@@ -54,7 +54,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
     Route::put('/settings', [SettingController::class, 'update'])->name('settings.update');
-    Route::get('/logwa', [LogwaController::class, 'index'])->name('settings.logwa');
+    Route::get('/notiflog', [NotificationLogController::class, 'index'])->name('settings.notiflog');
 });
 
 
