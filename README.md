@@ -76,3 +76,139 @@ Jalankan aplikasi di http://SISTEM-INFORMASI-LAUNDRY-KELOMPOK4.test (default her
 | admin       | 123123123    | kasir@gmail.com    |
 | pelanggan   | 123123123    | kasir@gmail.com    |
 | kasir       | 123123123    | kasir@gmail.com    |
+
+## Dokumentasi
+<p align="center">
+  <table>
+    <tr>
+      <td align="center">
+        <img src="docs/1.png" alt="Halaman Login"><br>
+        <b>Login</b>
+      </td>
+      <td align="center">
+        <img src="docs/2.png" alt="Halaman Register untuk Pelanggan"><br>
+        <b>Register</b>
+      </td>
+    </tr>
+    <tr>
+      <td align="center">
+        <img src="docs/3.png" alt="Halaman Dashboard Admin dan Kasir"><br>
+        <b>Dashboard</b>
+      </td>
+      <td align="center">
+        <img src="docs/4.png" alt="Halaman View Manajemen Pelanggan"><br>
+        <b>Manajemen Pelanggan</b>
+      </td>
+    </tr>
+    <tr>
+      <td align="center">
+        <img src="docs/5.png" alt="Overlay Tambah Pelanggan Baru"><br>
+        <b>Tambah Pelanggan</b>
+      </td>
+      <td align="center">
+        <img src="docs/6.png" alt="Overlay Edit Pelanggan"><br>
+        <b>Edit Pelanggan</b>
+      </td>
+    </tr>
+    <tr>
+      <td align="center">
+        <img src="docs/7.png" alt="Halaman View Manajemen Layanan"><br>
+        <b>Manajemen Layanan</b>
+      </td>
+      <td align="center">
+        <img src="docs/8.png" alt="Overlay Edit Layanan"><br>
+        <b>Edit Layanan</b>
+      </td>
+    </tr>
+    <tr>
+      <td align="center">
+        <img src="docs/9.png" alt="Halaman View Manajemen Transaksi"><br>
+        <b>Manajemen Transaksi</b>
+      </td>
+      <td align="center">
+        <img src="docs/10.png" alt="Overlay Buat Transaksi Baru"><br>
+        <b>Buat Transaksi</b>
+      </td>
+    </tr>
+    <tr>
+      <td align="center">
+        <img src="docs/11.png" alt="Halaman Order Tracking"><br>
+        <b>Order Tracking</b>
+      </td>
+      <td align="center">
+        <img src="docs/12.png" alt="Halaman View Permintaan Jemput"><br>
+        <b>Permintaan Jemput</b>
+      </td>
+    </tr>
+    <tr>
+      <td align="center">
+        <img src="docs/13.png" alt="Halaman View Permintaan Antar"><br>
+        <b>Permintaan Antar</b>
+      </td>
+      <td align="center">
+        <img src="docs/14.png" alt="Halaman View Search Pembayaran"><br>
+        <b>Pembayaran</b>
+      </td>
+    </tr>
+    <tr>
+      <td align="center">
+        <img src="docs/15.png" alt="Halaman View Pembayaran"><br>
+        <b>Laporan Keuangan</b>
+      </td>
+      <td align="center">
+        <img src="docs/16.png" alt="Halaman View Konfigurasi Sistem"><br>
+        <b>Konfigurasi Sistem</b>
+      </td>
+    </tr>
+    <tr>
+      <td align="center">
+        <img src="docs/17.png" alt="Halaman View Log Notifikasi"><br>
+        <b>Log Notifikasi</b>
+      </td>
+      <td align="center">
+        <img src="docs/18.png" alt="Overlay View Detail Pesan Notifikasi"><br>
+        <b>Pesan Notifikasi</b>
+      </td>
+    </tr>
+    <tr>
+      <td align="center">
+        <img src="docs/19.png" alt="Halaman View Dashboard Pelanggan"><br>
+        <b>Dashboard Pelanggan</b>
+      </td>
+      <td align="center">
+        <img src="docs/20.png" alt="Halaman Buat Permintaan Jemput Pesanan"><br>
+        <b>Buat Permintaan Jemput</b>
+      </td>
+    </tr>
+    <tr>
+      <td align="center">
+        <img src="docs/21.png" alt="Halaman View Pesanan Aktif"><br>
+        <b>Pesanan Aktif</b>
+      </td>
+      <td align="center">
+        <img src="docs/22.png" alt="Halaman View Detail Pesanan"><br>
+        <b>Detail Pesanan</b>
+      </td>
+    </tr>
+    <tr>
+      <td align="center">
+        <img src="docs/23.png" alt="Halaman View Riwayat Pesanan"><br>
+        <b>Riwayat Pesanan</b>
+      </td>
+      <td align="center">
+        <img src="docs/24.png" alt="Halaman View Poin Pelanggan"><br>
+        <b>Poin Saya</b>
+      </td>
+    </tr>
+    <tr>
+      <td align="center">
+        <img src="docs/25.png" alt="Halaman Edit Akun Pelanggan"><br>
+        <b>Manajemen Akun</b>
+      </td>
+      <td align="center">
+        <img src="docs/26.png" alt="Halaman View FAQ"><br>
+        <b>FAQ</b>
+      </td>
+    </tr>
+  </table>
+</p>
