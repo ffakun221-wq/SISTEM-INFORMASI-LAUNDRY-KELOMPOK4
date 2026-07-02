@@ -1,4 +1,9 @@
-<p align="center"><img src="docs/brand.svg" width=500 alt="Laundry System Brand"></p>
+<p align="center">
+    <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="docs/brand1.svg">
+        <img src="docs/brand2.svg" width=500 alt="Laundry System Brand">
+    </picture>
+</p>
 
 ## About
 Sistem Informasi Laundry merupakan aplikasi berbasis web yang dirancang untuk membantu proses operasional usaha laundry secara terintegrasi. Sistem ini dikembangkan untuk menggantikan proses pencatatan manual yang selama ini digunakan oleh banyak usaha laundry sehingga pengelolaan data menjadi lebih cepat, akurat, dan efisien.
